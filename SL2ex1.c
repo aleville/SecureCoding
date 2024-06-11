@@ -7,8 +7,8 @@
 int main(int argc, char** argv) {
     // Ensure that the user supplied exactly one command line argument
     if (argc != 2) { 
-    fprintf(stderr, "Please provide the address of a file as an input.\n");
-    return -1;
+        fprintf(stderr, "Please provide the address of a file as an input.\n");
+        return -1;
     }
     char cmd[BUFSIZE] = "wc -c < ";
     strcat(cmd, argv[1]);
