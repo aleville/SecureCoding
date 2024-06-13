@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
     const char *argOne = argv[1] + strlen(argv[1]);
     char help[BUFSIZE-8]={0};
     char *cp = argv[1];
-    for (help += strspn(cp, ok_chars); cp != argOne; cp += strspn(cp, ok_chars)) {
+    for (*help += strspn(cp, ok_chars); cp != argOne; *help += strspn(cp, ok_chars)) {
       *help = '_';
     }
     strncat(cmd, help, BUFSIZE-8);
