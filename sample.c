@@ -21,6 +21,6 @@ int main(int argc, char** argv) {
     for (cp += strspn(cp, ok_chars); cp != argOne; cp += strspn(cp, ok_chars)) {
       *cp = '_';
     }
-    strncat(cmd, argOne, BUFSIZE-8);
+    strncat(cmd, cp, BUFSIZE-8);
     system(cmd);
 }
