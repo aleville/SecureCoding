@@ -16,10 +16,11 @@ int main(int argc, char** argv) {
                          "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                          "1234567890_-.@";
     const char *argOne = argv[1] + strlen(argv[1]);
+    char help[BUFSIZE-8]={0};
     char *cp = argv[1];
-    for (cp += strspn(cp, ok_chars); cp != argOne; cp += strspn(cp, ok_chars)) {
-      *cp = '_';
+    for (help += strspn(cp, ok_chars); cp != argOne; cp += strspn(cp, ok_chars)) {
+      *help = '_';
     }
-    strncat(cmd, cp, BUFSIZE-8);
+    strncat(cmd, help, BUFSIZE-8);
     system(cmd);
 }
