@@ -13,7 +13,14 @@ int main(int argc, char** argv) {
     }
     char cmd[BUFSIZE] = "wc -c < ";
     char argOne[BUFSIZE-8] = {0};
-    strncat(argOne, argv[1], BUFSIZE-8);
+    static char ok_chars[] = "abcdefghijklmnopqrstuvwxyz"
+                         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                         "1234567890_-.@";
+    const char *argOne = argv[1] + strlen(argv[1]);
+    char *cp = argv[1];
+    for (cp += strspn(cp, ok_chars); cp != argOne; cp += strspn(cp, ok_chars)) {
+      *cp = '_';
+    }
     strncat(cmd, argOne, BUFSIZE-8);
     system(cmd);
 }
